@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="playerCharacterImplDAO" class="com.wesleyreisz.battlebot.dal.dao.PlayerCharacterImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+ 
+ 	<bean id="armorImplDAO" class="com.wesleyreisz.battlebot.dal.dao.ArmorImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+ 	<bean id="weaponImplDAO" class="com.wesleyreisz.battlebot.dal.dao.WeaponImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="weaponEffectsDAO" ref="weaponEffectsDAO" />
+		<property name="effectDAO" ref="effectDAO" />
+	</bean>
+	
+	<bean id="weaponEffectsDAO" class="com.wesleyreisz.battlebot.dal.dao.WeaponEffectsImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+ 	<bean id="effectDAO" class="com.wesleyreisz.battlebot.dal.dao.EffectImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+ 
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://wesleyreisz.com:3306/BattleBotDb" />
+		<property name="username" value="battle" />
+		<property name="password" value="battlePassword" />
+	</bean>
+</beans>

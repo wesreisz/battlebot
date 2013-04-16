@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="battle"
+		class="com.wesleyreisz.battlebot.Battle">
+		<constructor-arg><ref bean="player1"/></constructor-arg>
+		<constructor-arg><ref bean="player2"/></constructor-arg>
+		<property name="renderer">
+			<ref local="standardOutMessageRenderer" />
+		</property>
+	</bean>
+	<bean id="player1"
+		class="com.wesleyreisz.battlebot.PlayerCharacter" >
+		<constructor-arg><value>Maylar</value></constructor-arg>
+		<constructor-arg><value>17</value></constructor-arg>
+		<constructor-arg><value>12</value></constructor-arg>
+		<property name="weapon">
+			<ref local="fire" />
+		</property>
+		<property name="armor">
+			<ref local="plate" />
+		</property>
+	</bean>
+	<bean id="player2"
+		class="com.wesleyreisz.battlebot.PlayerCharacter">
+		<constructor-arg><value>Deend</value></constructor-arg>
+		<constructor-arg><value>12</value></constructor-arg>
+		<constructor-arg><value>17</value></constructor-arg>
+		<property name="weapon">
+			<ref local="ice1" />
+		</property>
+		<property name="armor">
+			<ref local="leather" />
+		</property>
+	</bean>
+	<bean id="standardOutMessageRenderer"
+		class="com.wesleyreisz.battlebot.renderer.StandardOutMessageRenderer" >
+	</bean>
+	<bean id="longSword"
+		class="com.wesleyreisz.battlebot.weapon.LongSword">
+	</bean>
+	<bean id="rapier"
+		class="com.wesleyreisz.battlebot.weapon.LongSword">
+	</bean>
+	<bean id="ice1"
+		class="com.wesleyreisz.battlebot.effect.Ice">
+		<constructor-arg><ref bean="ice"/></constructor-arg>
+	</bean>
+	<bean id="ice"
+		class="com.wesleyreisz.battlebot.effect.Ice">
+		<constructor-arg><ref bean="rapier"/></constructor-arg>
+	</bean>
+	<bean id="fire"
+		class="com.wesleyreisz.battlebot.effect.Fire">
+		<constructor-arg><ref bean="longSword"/></constructor-arg>
+	</bean>
+	<bean id="plate"
+		class="com.wesleyreisz.battlebot.armor.Plate">
+	</bean>
+	<bean id="leather"
+		class="com.wesleyreisz.battlebot.armor.Leather">
+	</bean>
+</beans>
